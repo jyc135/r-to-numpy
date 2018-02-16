@@ -3,3 +3,5 @@ numpy matrix that can be used in Python. It utilizes the rpy2 package which allo
 users to run R commands and scripts from Python.
 
 Usage: python r-to-numpy.py [file]
+
+Note: This will only work version of R 3.3.3 on Mac OS
