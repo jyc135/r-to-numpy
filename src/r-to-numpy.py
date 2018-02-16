@@ -3,20 +3,25 @@ import rpy2.robjects as ro
 import sys
 import os
 
-usage_message = "Usage: python " + os.path.basename(__file__) + " [file]"
+usage_message = ("Usage: python " + os.path.basename(__file__) + "[file] [var_name]\n"
+	"  [file]     the .Rdata file containing R workspace objects\n"
+	"  [var_name] name of matrix variable in the R workspace(optional)")
+	
 
 #reads in .Rdata file into a numpy array 
-def readRFileToNumpy(dataFilePath):
+def readRFileToNumpy(dataFilePath, varname = ''):
 	data_dir = (os.path.abspath(os.path.dirname(dataFilePath)))
 	dataFile = (os.path.basename(dataFilePath))
 
 	ro.r('setwd("' + data_dir + '")')
 	ro.r('load("'+ dataFile +'")')
 
-	ls = str(ro.r('ls()'))
-	startIndex = str.find(ls, '"') + 1
-	endIndex = str.find(ls, '"', startIndex + 1)
-	dataName = ls[startIndex:endIndex]
+	dataName = varname
+	if(varname == ''):
+		ls = str(ro.r('ls()'))
+		startIndex = str.find(ls, '"') + 1
+		endIndex = str.find(ls, '"', startIndex + 1)
+		dataName = ls[startIndex:endIndex]
 
 	rows = rToInt(ro.r('dim(' + dataName + ')[1]'))
 	cols = rToInt(ro.r('dim(' + dataName + ')[2]'))
@@ -45,9 +50,14 @@ def rToInt(rOutput):
 	return int(rToString(rOutput))
 
 if __name__ == "__main__":
-	if(len(sys.argv) != 2):
+	numArgs = len(sys.argv)
+	data = None
+	if(numArgs == 2):
+		data = readRFileToNumpy(sys.argv[1])
+	elif(numArgs == 3):	
+		data = readRFileToNumpy(sys.argv[1], sys.argv[2])
+	else:
 		print(usage_message)
 		sys.exit(0)
-	inputFile = sys.argv[1]
-	print(readRFileToNumpy(inputFile))
+	print(data)
 
