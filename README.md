@@ -2,6 +2,6 @@ This program converts a .Rdata file containing a single matrix object and conver
 numpy matrix that can be used in Python. It utilizes the rpy2 package which allows
 users to run R commands and scripts from Python.
 
-Usage: python r-to-numpy.py [file] [varname]
-[file]    the .Rdata file containing R workspace objects
-[varname] name of matrix in the R workspace (optional)
+Usage: python r-to-numpy.py [file] [varname]  
+[file]    the .Rdata file containing R workspace objects  
+[varname] name of matrix in the R workspace (optional)  
