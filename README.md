@@ -4,4 +4,6 @@ users to run R commands and scripts from Python.
 
 Usage: python r-to-numpy.py [file] [varname]  
   [file]    the .Rdata file containing R workspace objects  
-  [varname] name of matrix in the R workspace (optional)  
+  [varname] name of matrix in the R workspace (optional)   
+  
+rpy2 can be installed here: https://rpy2.bitbucket.io/
