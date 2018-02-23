@@ -4,7 +4,7 @@ import sys
 import os
 import datetime
 
-usage_message = ("Usage: python " + os.path.basename(__file__) + "[file] [var_name]\n"
+usage_message = ("Usage: python " + os.path.basename(__file__) + " [file] [var_name]\n"
 	"  [file]     the .Rdata file containing R workspace objects\n"
 	"  [var_name] name of matrix variable in the R workspace (optional)")
 
