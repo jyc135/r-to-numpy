@@ -45,7 +45,7 @@ def readRFileToNumpy(dataFilePath, varname = '', debug = False):
 			el = (i + 1)*rows
 			output = (str(el) + " elements read in " + str(diff//60) + ""
 				" min " + str(diff % 60) + " sec"
-				" (" + str(round(el/(rows*cols), 3)*100) + "%)")
+				" (" + str(round(100.0 * el/(rows*cols), 3)) + "%)")
 			print(output)
 
 	return data
